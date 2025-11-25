@@ -41,4 +41,20 @@ public class AuthService {
         }
         return null;
     }
+
+    public boolean existeCorreo(String email) {
+        return usuarioRepository.existsByEmail(email);
+    }
+
+    public boolean recuperarContrasena(String email) {
+        Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
+        if (usuarioOpt.isPresent()) {
+            Usuario usuario = usuarioOpt.get();
+            // Le ponemos una clave dura "visso1234" encriptada
+            usuario.setPasswordHash(encoder.encode("visso1234"));
+            usuarioRepository.save(usuario);
+            return true;
+        }
+        return false;
+    }
 }

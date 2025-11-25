@@ -108,4 +108,12 @@ public class CarritoService {
         carrito.setEstado("C"); // C = Cerrado/Comprado
         return carritoRepository.save(carrito);
     }
+    
+      
+
+    // Listar todas las ventas (Carritos Cerrados)
+    public List<Carrito> listarVentas() {
+        return carritoRepository.findByEstado("C");
+    }
+    
 }

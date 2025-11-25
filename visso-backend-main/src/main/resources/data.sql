@@ -41,3 +41,15 @@ INSERT INTO producto (
 
 (3, 'ACC-GEN-01', 'Líquido limpieza 250ml',
  'Solución para limpieza de lentes', 5990.00, 50, 'A', '2025-11-18', '/images/liquido_1.webp', 4, 4);
+
+-- ============================
+-- USUARIOS
+-- Nota: La contraseña para ambos es '123456'
+-- El hash $2a$10$P1.w.... es el resultado de encriptar '123456' con BCrypt
+-- ============================
+
+INSERT INTO usuario (nombre, apellido, rut, email, password_hash, rol, fecha_registro, activo) VALUES 
+('Administrador', 'Visso', '11.111.111-1', 'admin@visso.cl', '$2a$10$8.UnVuG9HHgffUDAlk8qfOpNaNSxFEAd4.QPK2A.F5CCAWhsrrZQm', 'ADMIN', '2024-11-20', 1);
+
+INSERT INTO usuario (nombre, apellido, rut, email, password_hash, rol, fecha_registro, activo) VALUES 
+('Juan', 'Pérez', '12.345.678-9', 'juan@duocuc.cl', '$2a$10$y3RdScRbLPiYqtCRtXCDzedIhizQ7qvXGRLO75xcIHDskqK9Gry1K', 'USER', '2024-11-20', 1);

@@ -3,6 +3,9 @@ package cl.duoc.visso.controller;
 import cl.duoc.visso.dto.SolicitudCarrito;
 import cl.duoc.visso.model.Carrito;
 import cl.duoc.visso.service.CarritoService;
+
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,5 +40,13 @@ public class CarritoController {
     public ResponseEntity<?> cerrarCarrito(@PathVariable Long usuarioId) {
         carritoService.cerrarCarrito(usuarioId);
         return ResponseEntity.ok("Compra realizada con éxito.");
+    }
+
+
+    @GetMapping("/ventas")
+    public ResponseEntity<List<Carrito>> obtenerVentas() {
+        // Aquí podrías validar que el usuario sea ADMIN si usaras tokens,
+        // pero por ahora está bien así.
+        return ResponseEntity.ok(carritoService.listarVentas());
     }
 }

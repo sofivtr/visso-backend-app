@@ -18,4 +18,16 @@ public class UsuarioService {
     public Optional<Usuario> obtenerPorId(Long id) {
         return usuarioRepository.findById(id);
     }
+
+    public Optional<Usuario> actualizarUsuario(Long id, Usuario usuarioEditado) {
+        return usuarioRepository.findById(id).map(usuarioExistente -> {
+            // Actualizamos solo los datos permitidos
+            usuarioExistente.setNombre(usuarioEditado.getNombre());
+            usuarioExistente.setApellido(usuarioEditado.getApellido());
+            usuarioExistente.setEmail(usuarioEditado.getEmail());
+            // No tocamos Password, Rol ni Rut por seguridad en este endpoint
+            
+            return usuarioRepository.save(usuarioExistente);
+        });
+    }
 }
