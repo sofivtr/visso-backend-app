@@ -2,6 +2,9 @@ package cl.duoc.visso.controller;
 
 import cl.duoc.visso.model.Usuario;
 import cl.duoc.visso.service.UsuarioService;
+
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,4 +34,20 @@ public class UsuarioController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    // 3. Listar todos los usuarios (ADMIN - FALTABA ESTE)
+    @GetMapping
+    public ResponseEntity<List<Usuario>> listarUsuarios() {
+        // Nota: Si no tienes este método en el servicio, el repositorio JPA lo tiene por defecto (findAll)
+        // Aquí asumimos que tu servicio expone listarTodos() o similar.
+        // Si da error, usa usuarioRepository.findAll() directamente si tienes acceso, o agrega el método al servicio.
+        return ResponseEntity.ok(usuarioService.listarTodos()); 
+    }
+
+    // 4. Eliminar usuario (ADMIN - FALTABA ESTE)
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
+        usuarioService.eliminarUsuario(id);
+        return ResponseEntity.noContent().build();
+    }    
 }

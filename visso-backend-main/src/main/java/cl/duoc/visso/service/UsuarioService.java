@@ -4,6 +4,7 @@ import cl.duoc.visso.model.Usuario;
 import cl.duoc.visso.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,5 +30,17 @@ public class UsuarioService {
             
             return usuarioRepository.save(usuarioExistente);
         });
+    }
+
+    // --- MÉTODOS NUEVOS PARA EL ADMIN ---
+
+    // 1. Listar todos los usuarios
+    public List<Usuario> listarTodos() {
+        return usuarioRepository.findAll();
+    }
+
+    // 2. Eliminar un usuario por ID
+    public void eliminarUsuario(Long id) {
+        usuarioRepository.deleteById(id);
     }
 }
