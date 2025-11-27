@@ -2,7 +2,7 @@
 -- CATEGORIAS (Sin tildes)
 -- ============================
 INSERT INTO categoria (id_categoria, nombre) VALUES
-(1, 'Lentes opticos'),
+(1, 'Opticos'),
 (2, 'Lentes de sol'),
 (3, 'Lentes de contacto'),
 (4, 'Accesorios');
