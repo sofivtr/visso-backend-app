@@ -23,7 +23,7 @@ public class DetalleCarrito {
     @JsonBackReference 
     private Carrito carrito;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_producto", nullable = true, foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
     private Producto producto;
 
