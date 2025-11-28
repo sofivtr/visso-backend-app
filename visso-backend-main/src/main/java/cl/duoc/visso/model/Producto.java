@@ -35,10 +35,6 @@ public class Producto {
     @Column(name = "stock", nullable = false)
     private Integer stock;
 
-    // ‘O’ óptico, ‘S’ sol, ‘C’ contacto, ‘A’ accesorio
-    @Column(name = "tipo", nullable = false, length = 1)
-    private String tipo;
-
     @Column(name = "fecha_creacion", nullable = false)
     private LocalDate fechaCreacion;
 

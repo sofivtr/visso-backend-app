@@ -29,7 +29,10 @@ public class ProductoService {
 
     // Crear un nuevo producto
     public Producto crearProducto(Producto producto) {
-        // acá podrías validar cosas si quieres
+        // Si no viene fecha de creación, establecer la fecha actual
+        if (producto.getFechaCreacion() == null) {
+            producto.setFechaCreacion(java.time.LocalDate.now());
+        }
         return productoRepository.save(producto);
     }
 
@@ -41,7 +44,6 @@ public class ProductoService {
             productoExistente.setDescripcion(productoActualizado.getDescripcion());
             productoExistente.setPrecio(productoActualizado.getPrecio());
             productoExistente.setStock(productoActualizado.getStock());
-            productoExistente.setTipo(productoActualizado.getTipo());
             productoExistente.setFechaCreacion(productoActualizado.getFechaCreacion());
             productoExistente.setImagenUrl(productoActualizado.getImagenUrl());
             productoExistente.setCategoria(productoActualizado.getCategoria());

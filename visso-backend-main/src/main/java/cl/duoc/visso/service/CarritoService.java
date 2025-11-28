@@ -86,6 +86,7 @@ public class CarritoService {
         DetalleCarrito detalle = new DetalleCarrito();
         detalle.setCarrito(carrito);
         detalle.setProducto(producto);
+        detalle.setNombreProducto(producto.getNombre()); // Copiar nombre para histórico
         detalle.setCantidad(cantidad);
         detalle.setPrecioUnitario(producto.getPrecio());
         detalle.setCotizacion(cotizacion);
