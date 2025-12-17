@@ -106,6 +106,19 @@ public class CarritoService {
     // Cierra el carrito para simular la compra finalizada
     public Carrito cerrarCarrito(Long usuarioId) {
         Carrito carrito = obtenerCarritoActivo(usuarioId);
+        // Restar stock de cada producto en el carrito
+        List<DetalleCarrito> detalles = detalleRepository.findByCarrito(carrito);
+        for (DetalleCarrito detalle : detalles) {
+            Producto producto = detalle.getProducto();
+            if (producto != null) {
+                int nuevoStock = producto.getStock() - detalle.getCantidad();
+                if (nuevoStock < 0) {
+                    throw new RuntimeException("Stock insuficiente para el producto: " + producto.getNombre());
+                }
+                producto.setStock(nuevoStock);
+                productoRepository.save(producto);
+            }
+        }
         carrito.setEstado("C"); // C = Cerrado/Comprado
         return carritoRepository.save(carrito);
     }
