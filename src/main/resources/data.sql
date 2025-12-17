@@ -126,3 +126,6 @@ INSERT INTO usuario (nombre, apellido, rut, email, password_hash, rol, fecha_reg
 
 INSERT INTO usuario (nombre, apellido, rut, email, password_hash, rol, fecha_registro, activo) VALUES 
 ('Sofi', 'Munoz', '21.970.360-0', 'sofi@duocuc.cl', '$2a$10$y3RdScRbLPiYqtCRtXCDzedIhizQ7qvXGRLO75xcIHDskqK9Gry1K', 'USER', '2024-11-20', 1);
+
+INSERT INTO usuario (nombre, apellido, rut, email, password_hash, rol, fecha_registro, activo) VALUES 
+('Vendedor', 'Visso', '21.566.746-4', 'vendedor@visso.cl', '$2a$10$y3RdScRbLPiYqtCRtXCDzedIhizQ7qvXGRLO75xcIHDskqK9Gry1K', 'VENDEDOR', '2024-11-20', 1);
