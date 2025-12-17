@@ -32,9 +32,15 @@ public class ProductoController {
 
     // CRUD: Crear
     @PostMapping
-    public ResponseEntity<Producto> crearProducto(@RequestBody Producto producto) {
-        Producto creado = productoService.crearProducto(producto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(creado);
+    public ResponseEntity<?> crearProducto(@RequestBody Producto producto) {
+        try {
+            Producto creado = productoService.crearProducto(producto);
+            return ResponseEntity.status(HttpStatus.CREATED).body(creado);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al crear producto");
+        }
     }
 
     // CRUD: Actualizar

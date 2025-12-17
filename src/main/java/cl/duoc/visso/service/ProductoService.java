@@ -33,6 +33,10 @@ public class ProductoService {
         if (producto.getFechaCreacion() == null) {
             producto.setFechaCreacion(java.time.LocalDate.now());
         }
+        // Validar código único
+        if (productoRepository.existsByCodigoProducto(producto.getCodigoProducto())) {
+            throw new IllegalArgumentException("Código existente");
+        }
         return productoRepository.save(producto);
     }
 
